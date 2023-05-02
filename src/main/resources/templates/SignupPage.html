@@ -1,0 +1,76 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<style>
+body {
+	 background: url("https://www.bing.com/images/search?view=detailV2&ccid=zYtcX3Ac&id=4F81787807015ACFD858AC767678986D3138CFB5&thid=OIP.zYtcX3AcK6TRcM3lNa-4JQHaE7&mediaurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.cd8b5c5f701c2ba4d170cde535afb825%3frik%3dtc84MW2YeHZ2rA%26riu%3dhttp%253a%252f%252fwww.beyondpesticides.org%252fdailynewsblog%252fwp-content%252fuploads%252f2011%252f03%252fhospital-empty.jpg%26ehk%3drsK3s%252b4uCUI%252bf8RIr3f1N4MNA25WJRzoC04BTJm%252fOQk%253d%26risl%3d%26pid%3dImgRaw%26r%3d0&exph=1131&expw=1698&q=hospital&simid=608019240473669006&FORM=IRPRST&ck=7BE4E9E8DC57A29406B043F9159A62A2&selectedIndex=3&ajaxhist=0&ajaxserp=0") no-repeat top center fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+	color: black;
+	background-blend-mode: lighten;
+	justify-content: center
+}
+#form{
+    max-width: 625px;
+    background-color: #dbdbdb;
+	text-align: center;
+	margin-top: 175px;
+	padding: 20px;
+	opacity: 0.88;
+	max-width: 42em;
+	box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+}
+</style>
+<body>
+    <div id="form" class="container text-center">
+        <div>
+            <h1>User Registration - Sign Up</h1>
+        </div>
+        <br />
+        <form th:action="@{/process_register}" th:object="${user}"
+            method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label"><b>E-mail:</b></label>
+                <div class="col-8">
+                    <input type="email" th:field="*{email}" class="form-control" required />
+                </div>
+            </div>
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label"><b>Password:</b> </label>
+                <div class="col-8">
+                    <input type="password" th:field="*{password}" class="form-control"
+                            required minlength="6" maxlength="10"/>
+                </div>
+            </div>
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label"><b>First Name:</b> </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{firstName}" class="form-control"
+                            required minlength="2" maxlength="20"/>
+                </div>
+            </div>
+             
+            <div class="form-group row">
+                <label class="col-4 col-form-label"><b>Last Name:</b> </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{lastName}" class="form-control"
+                            required minlength="2" maxlength="20" />
+                </div>
+            </div>
+             
+            <div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</body>
+</html>

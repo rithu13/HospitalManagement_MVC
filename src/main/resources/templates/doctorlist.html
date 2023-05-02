@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+	crossorigin="anonymous">
+<!-- Bootstrap core CSS -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+	rel="stylesheet" type="text/css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"></link>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+	crossorigin="anonymous"></script>
+<title>Hospital Manager</title>
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Roboto:wght@300 &display=swap')
+	;
+
+.card {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	color: #444;
+	background: linear-gradient(to right bottom, #A9C9FF 0%, #FFBBEC 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.doctor {
+	max-width: 1050px;
+	border-radius: 5px;
+	display: flex;
+	box-shadow: 0 5px 20px 10px rgba(0, 0, 0, 0.2);
+	overflow: hidden;
+}
+
+.doctor__hero {
+	flex: 0 0 45%;
+}
+
+.doctor__img {
+	width: 100%;
+	display: block;
+}
+
+.doctor__content {
+	background-color: #fff;
+	flex: 1;
+	padding: 35px 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.doctor__price {
+	background: linear-gradient(to bottom, #A9C9FF 0%, #FFBBEC 100%);
+	flex: 0 0 50px;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	color: rgb(255, 255, 255);
+	writing-mode: vertical-lr;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.doctor__title {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.heading__primary {
+	font-size: 16px;
+	margin-right: auto;
+	color: royalblue;
+}
+
+.fa-fire {
+	color: salmon;
+}
+
+.doctor__tag {
+	font-size: 10px;
+	color: #fff;
+	padding: 2px 7px;
+	border-radius: 100px;
+	margin-right: 8px;
+	display: block;
+	text-transform: uppercase;
+}
+
+.doctor__tag--1 {
+	background-color: #A9C9FF;
+	font-size: 16px;
+}
+
+.doctor__description {
+	font-size: 17px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.doctor__details {
+	align-items: center;
+	margin: auto;
+}
+
+.doctor__detail_1{
+	align-items: center;
+	margin: auto;
+	color: red;
+}
+
+.doctor__detail {
+	font-size: 16px;
+	margin-right: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.icons i {
+	margin-right: 3px;
+	font-size: 18px;
+}
+
+.icons-red {
+	color: salmon;
+}
+
+.icons-grey {
+	color: grey;
+}
+
+.icons-yellow {
+	color: rgb(190, 190, 71);
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand">Doctor Booking</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ">
+				<li class="nav-item active"><a class="nav-link" href="/home">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item active"><a class="nav-link" href="/book">Doctor Appointment
+						</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="/doctorlist">Doctor List</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+					role="button" aria-haspopup="true" aria-expanded="false">[[${#request.userPrincipal.principal.fullName}]]</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/profile">Profile</a>
+						<div class="dropdown-item">
+							<form th:action="@{/logout}" method="post">
+								<button type="submit" class="btn btn-outline-primary btn-sm">Sign
+									Out</button>
+							</form>
+						</div>
+					</div></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="card" align="center">
+		<br /> <a href="/new">
+			<button th:if="${cond} == True" type="button" class="btn btn-primary btn-lg">Create
+				New Doctor</button>
+		</a> <br /> <br />
+		<div class="jumbotron">
+			<div class="container">
+				<h1 class="display-4">Search Your Doctor</h1>
+			</div>
+		</div>
+		<br />
+		<form th:action="@{/search}" method="get">
+			<input type="text" name="keyword" th:value="${keyword}"
+				placeholder="Find by Doctor Name & Doctor Spectialization" size="50">
+			<button type="submit" class="btn btn-info">Search</button>
+			<button type="submit" class="btn btn-info">Reset</button>
+		</form>
+		<br /> <br />
+		<figure class="doctor" th:each="doctor : ${listDoctors}">
+
+			<div class="doctor__content">
+				<div class="doctor__title">
+					<h1 th:text="${doctor.doctorname}" class="heading__primary">
+						Doctor Name
+					</h1>
+					<div th:text="${doctor.doctorspecialization}" class="doctor__tag doctor__tag--1">Doctor
+						Specialization</div>
+				</div>
+				<p th:text="${doctor.doctordescription}" class="doctor__description">
+					doctor Description</p>
+				<div class="doctor__details">
+				<b>doctor Rating</b><p th:text="${doctor.doctorrating}" class="doctor__detail">
+						<span class="icons icons-red">doctor Rating
+						</span>
+					</p>
+					</div>
+					<div class="doctor__detail">
+					<p th:if="${cond} == True">
+						<a th:href="@{'/edit/' + ${doctor.id}}">
+							<button type="button" class="btn btn-primary">Edit doctor</button>
+						</a>
+					</p>
+					<p th:if="${cond} == True">
+						<a th:href="@{'/delete/' + ${doctor.id}}">
+							<button type="button" class="btn btn-primary">Delete
+								doctor</button>
+						</a>
+					</p>
+				</div>
+			</div>
+			<div th:text="${doctor.doctorprice}" class="doctor__price">doctor
+				Price</div>
+		</figure>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<form th:action="@{/appointments}" th:object="${appointment}" method="post">
+    <!-- Input fields for appointment details -->
+    <input type="text" th:field="*{doctorname}" />
+  
+    <!-- Add more input fields for other appointment details -->
+
+    <!-- Submit button to submit the form -->
+    <button type="submit">Book Appointment</button>
+</form>
