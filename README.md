@@ -1,4 +1,4 @@
-# Movie-Ticket-Booking-System
+#hospital managment system
 
 ## Technologies Used:
 
